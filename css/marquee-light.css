@@ -1,0 +1,92 @@
+/* The main container class (marquee-instance) is only for grouping HTML and JS initialization */
+.marquee-instance {
+  position: relative;
+}
+
+/* The element that is hidden from screen readers, contains the scrolling content, and handles drag/hover */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative; 
+  white-space: nowrap;
+  cursor: grab; /* Visual indicator for dragging */
+}
+
+.marquee:active {
+  cursor: grabbing;
+}
+
+/* The Track is the element controlled by JavaScript */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  /* Transition for smooth movement when a drag ends or after a snap */
+  transition: transform 0.3s ease-out; 
+}
+
+/* Applied via JavaScript when the Pause button is pressed (stops continuous movement) */
+.marquee.paused .marquee-track {
+  /* Position is held by the JavaScript variable */
+}
+
+.marquee-content {
+  display: flex;
+  /* Reads the variable set by JS or uses 2rem as a default fallback */
+  gap: var(--marquee-gap, 2rem); 
+  /* Padding must match the gap to ensure the loop is seamless */
+  padding-right: var(--marquee-gap, 2rem); 
+}
+
+.card {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 4px;
+}
+
+/* Base styles for both pseudo-elements */
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px; /* Adjust this value to change the fade length */
+  z-index: 10;
+  /* Prevents the fade layer from blocking clicks/drags */
+  pointer-events: none; 
+}
+
+/* Left Fade-In Effect */
+.marquee::before {
+  left: 0;
+  /* Gradient starts with the background color and fades to transparent */
+  background: linear-gradient(to right, #fff 0%, transparent 90%);
+}
+
+/* Right Fade-Out Effect */
+.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, transparent 90%);
+}
+
+/* Rule to disable the fade when data-fade="false" is set in HTML */
+.marquee.no-fade::before,
+.marquee.no-fade::after {
+  content: none;
+}
+
+/* --- Control Styling --- */
+.marquee-controls {
+  padding: 10px 0;
+}
+
+/* Targets smaller screens */
+@media (max-width: 768px) {
+    /* Hide the fades on small screens */
+    .marquee::before,
+    .marquee::after {
+        content: none;
+    }
+}
