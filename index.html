@@ -14,6 +14,19 @@
 
 </head>
 <body>
+<div class="marquee-instance py-2 bg-info border-0" data-speed="0.4" data-fade="false">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-content text-white" data-content-source>
+        <span>⚡Marquee Light. A simple and slow marquee for text & image marquees. Create one or multiple instances.</span>
+      </div>
+    </div>
+  </div>
+  <div class="marquee-controls d-none">
+    <button class="toggle-marquee-btn btn btn-sm btn-secondary">
+    </button>
+  </div>
+</div>
 
 <div class="py-4 container">
   <h1>
@@ -58,7 +71,7 @@
       </div>
     </div>
   </div>
-  <div class="marquee-controls container text-start">
+  <div class="marquee-controls container px-2 text-start">
     Play/stop image marquee:
     <button class="toggle-marquee-btn btn btn-sm btn-secondary" title="Stop">
       Stop
@@ -66,15 +79,15 @@
   </div>
 </div>
 
-<div class="marquee-instance pt-2" data-speed="0.5">
+<div class="marquee-instance pt-4" data-speed="0.5">
   <div class="marquee py-2" aria-hidden="true">
     <div class="marquee-track border">
       <div class="marquee-content" data-content-source>
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula ultrices dui, vel condimentum sapien. Ut eget venenatis risus, et aliquam nulla. Curabitur lacinia commodo porttitor.</span>
+        <span class="display-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula ultrices dui, vel condimentum sapien. Ut eget venenatis risus, et aliquam nulla. Curabitur lacinia commodo porttitor.</span>
       </div>
     </div>
   </div>
-  <div class="marquee-controls container mt-3 text-start fs-14">
+  <div class="marquee-controls container mt-3 px-2 text-start fs-14">
     Play/stop text marquee:
     <button class="toggle-marquee-btn btn btn-sm btn-secondary" title="Stop">
       Stop
@@ -85,8 +98,18 @@
 <div class="container pt-5">
   <div class="row">
     <div class="col">
+      <div class="alert alert-warning">
+        This marquee uses a clone technique to create the infinite loop. The marquee will slide all the way back to the begining once it has looped through all the cloned items.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container pt-5">
+  <div class="row">
+    <div class="col">
       <h2>To Use</h2>
-      <p class="pt-2">Add CSS and JavaScript to <strong>&lt;HEAD&gt;</strong></p>
+      <p class="pt-2">Add CSS and JavaScript to <strong>&lt;HEAD&gt;</strong> (<a href="#">Download</a>)</p>
         
       <pre class="bg-light border p-3"><code>&lt;link rel="stylesheet" href="marquee-light.css"&gt;
 &lt;script src="marquee-light.js"&gt;&lt;/script&gt;</code></pre>
